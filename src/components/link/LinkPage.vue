@@ -67,6 +67,7 @@ export default {
         item-value="linkBundleId"
         variant="outlined"
         density="compact"
+        return-object
     ></v-select>
     <v-text-field
         label="링크 설명"

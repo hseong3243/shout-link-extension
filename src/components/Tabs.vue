@@ -2,10 +2,11 @@
 import LoginPage from "@/components/login/LoginPage.vue";
 import {useAuthStore} from "@/store/AuthStore.js";
 import LinkPage from "@/components/link/LinkPage.vue";
+import HubPage from "@/components/hub/HubPage.vue";
 
 export default {
   name: "Tabs",
-  components: {LinkPage, LoginPage},
+  components: {HubPage, LinkPage, LoginPage},
   setup() {
     const authStore = useAuthStore();
     return {authStore}
@@ -36,6 +37,7 @@ export default {
           <LinkPage/>
         </v-window-item>
         <v-window-item value="2">
+          <HubPage/>
         </v-window-item>
         <v-window-item value="3">
           <LoginPage @loginEvent="changeTabNumber"/>
