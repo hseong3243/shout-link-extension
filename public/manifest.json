@@ -4,6 +4,9 @@
   "version": "1.0",
   "description": "Add the reading time to Chrome Extension documentation articles",
   "action": {
-    "default_popup": "src/App.vue"
-  }
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "activeTab"
+  ]
 }
