@@ -1,16 +1,15 @@
 <script setup>
-import Tabs from "@/components/Tabs.vue";
+import MainPage from "@/components/MainPage.vue";
 </script>
 
 <template>
   <div class="size">
-    <Tabs/>
+    <MainPage/>
   </div>
 </template>
 
 <style scoped>
 .size {
-  width: 350px;
-  height: 150px;
+  width: 400px;
 }
 </style>
