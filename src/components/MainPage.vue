@@ -2,10 +2,11 @@
 import Tabs from "@/components/Tabs.vue";
 import {useAuthStore} from "@/store/AuthStore.js";
 import LoginPage from "@/components/login/LoginPage.vue";
+import Title from "@/components/Title.vue";
 
 export default {
   name: "MainPage",
-  components: {LoginPage, Tabs},
+  components: {Title, LoginPage, Tabs},
   setup() {
     const authStore = useAuthStore();
     return {authStore}

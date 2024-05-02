@@ -2,10 +2,11 @@
 import LoginPage from "@/components/login/LoginPage.vue";
 import LinkPage from "@/components/link/LinkPage.vue";
 import HubPage from "@/components/hub/HubPage.vue";
+import Title from "@/components/Title.vue";
 
 export default {
   name: "Tabs",
-  components: {HubPage, LinkPage, LoginPage},
+  components: {Title, HubPage, LinkPage, LoginPage},
   data() {
     return {
       tab: "1",
@@ -27,9 +28,9 @@ export default {
     <v-tabs v-model="tab" grow>
       <v-tab value="1">링크 추가</v-tab>
       <v-tab value="2">허브 링크 추가</v-tab>
-      <v-tab @click="moveToSite">홈으로</v-tab>
     </v-tabs>
     <v-card-text>
+      <Title/>
       <v-window v-model="tab">
         <v-window-item value="1">
           <LinkPage/>
