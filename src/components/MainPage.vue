@@ -16,7 +16,6 @@ export default {
 
 <template>
   <div>
-    <Title/>
     <Tabs v-if="authStore.isLogin"/>
     <LoginPage v-if="!authStore.isLogin"/>
   </div>

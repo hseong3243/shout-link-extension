@@ -1,8 +1,10 @@
 <script>
 import {useAuthStore} from "@/store/AuthStore.js";
+import Title from "@/components/Title.vue";
 
 export default {
   name: "LoginPage",
+  components: {Title},
   setup() {
     const authStore = useAuthStore();
     return {authStore}
@@ -28,6 +30,7 @@ export default {
 
 <template>
   <v-container>
+    <Title/>
     <v-form>
       <v-text-field
           v-model="loginRequest.email"
