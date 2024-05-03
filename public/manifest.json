@@ -2,6 +2,9 @@
   "manifest_version": 3,
   "name": "샤우트 링크",
   "version": "1.1",
+  "icons": {
+    "128": "icon_128.png"
+  },
   "description": "간편하게 링크를 관리하기 위한 링크 아카이빙 서비스의 확장 프로그램",
   "action": {
     "default_popup": "index.html"
