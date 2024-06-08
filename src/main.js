@@ -18,4 +18,14 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 const pinia = createPinia();
 pinia.use(piniaPluginPersistedstate)
 
-createApp(App).use(vuetify).use(pinia).mount('#app')
+// Day.js
+import dayjs from "dayjs";
+import timezone from 'dayjs/plugin/timezone'
+dayjs.extend(timezone)
+dayjs.tz.setDefault('Asia/Seoul')
+
+createApp(App)
+.use(vuetify)
+.use(pinia)
+.use(dayjs)
+.mount('#app')
