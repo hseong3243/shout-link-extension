@@ -1,9 +1,12 @@
 <script>
 import {useAuthStore} from "@/store/AuthStore.js";
 import api from "@/axios/index.js";
+import VueDatePicker from "@vuepic/vue-datepicker";
+import dayjs from "dayjs";
 
 export default {
   name: "HubPage",
+  components: {VueDatePicker},
   setup() {
     const authStore = useAuthStore();
     return {authStore}
@@ -18,10 +21,12 @@ export default {
       linkBundles: [
         {}
       ],
+      selectedExpiredAt: false,
       createHubLinkRequest: {
         linkBundleId: 0,
         url: "",
         description: "",
+        expiredAt: null,
       }
     }
   },
@@ -57,10 +62,15 @@ export default {
       }
     },
     createHubLinkApiCall() {
+      let expiredAtStr = '';
+      if (this.createHubLinkRequest.expiredAt !== null) {
+        expiredAtStr = dayjs(this.createHubLinkRequest.expiredAt).format('YYYY-MM-DDTHH:mm:ss');
+      }
       api.post(`/api/hubs/${this.selectedHub.hubId}/links`, {
         linkBundleId: this.selectedLinkBundle.linkBundleId,
         url: this.createHubLinkRequest.url,
-        description: this.createHubLinkRequest.description
+        description: this.createHubLinkRequest.description,
+        expiredAt: expiredAtStr
       })
       .then((response) => {
         alert('새로운 링크가 추가되었습니다!');
@@ -102,6 +112,20 @@ export default {
         density="compact"
         v-model="createHubLinkRequest.description"
     ></v-text-field>
+    <div class="d-flex ga-1">
+      <input type="checkbox" v-model="selectedExpiredAt"/>
+      <p>만료일 지정</p>
+    </div>
+    <div class="d-flex justify-center pa-1" v-if="selectedExpiredAt">
+      <vue-date-picker
+          v-model="createHubLinkRequest.expiredAt"
+          class="w-75"
+          locale="ko"
+          timezone="Asia/Seoul"
+          inline
+          auto-apply>
+      </vue-date-picker>
+    </div>
     <div class="text-end">
       <v-btn
           variant="outlined"
